@@ -25,6 +25,11 @@ White='\033[0;37m'  # White
 currentBranch=$(git branch --show-current)
 echo "Current branch is: $Green $currentBranch $Color_Off"
 
+echo "$Green"
+echo
+lastCommitMessage=$(git log -1 --pretty=%B | cat)
+echo "Last commit message: $lastCommitMessage $Color_Off"
+
 if [[ $currentBranch =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
   jiraId=${BASH_REMATCH[1]}
   echo "$Green"
