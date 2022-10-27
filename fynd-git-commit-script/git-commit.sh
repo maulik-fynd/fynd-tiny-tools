@@ -1,5 +1,4 @@
 #!/bin/bash
-
 print_usage() {
   printf "a  >  git add . "
   printf "c  >  git commit -m ..."
@@ -75,12 +74,12 @@ fi
 
 if [ "$docommit" = "true" ]; then
   echo "executing > git commit -m \"$commitMessage\""
-  git commit -m \"$commitMessage\"
+  git commit -m "$commitMessage"
 fi
 
 if [ "$emptycommit" = "true" ]; then
   echo "executing > git commit --allow-empty -m \"$commitMessage\""
-  git commit --allow-empty -m \"$commitMessage\"
+  git commit --allow-empty -m "$commitMessage"
 fi
 
 if [ "$dopush" = "true" ]; then
