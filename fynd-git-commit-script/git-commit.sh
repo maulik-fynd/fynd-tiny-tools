@@ -39,7 +39,7 @@ if [[ $currentBranch =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
     read -p "Do you wish to change ID? (yn) " yn
     case $yn in
     [Yy]*)
-      read -p "Jira/Tracker ID: " jiraString
+      read -p "Jira Link/Tracker ID: " jiraString
       if [[ $jiraString =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
         jiraId=${BASH_REMATCH[1]}
         echo "$Green"
@@ -53,7 +53,12 @@ if [[ $currentBranch =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
   done
 else
   echo "$Red Tracker ID could NOT be detected from branch name: '$currentBranch' $Color_Off" >&2
-  read -p "Jira/Tracker ID : $jiraId" jiraId
+  read -p "Jira Link/Tracker ID: " jiraString
+  if [[ $jiraString =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
+    jiraId=${BASH_REMATCH[1]}
+    echo "$Green"
+    echo "ID : $jiraId $Color_Off"
+  fi
 fi
 
 read -p "Hours Involved : " hours
