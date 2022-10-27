@@ -27,7 +27,7 @@ echo "Current branch is: $Green $currentBranch $Color_Off"
 
 echo "$Green"
 echo
-lastCommitMessage=$(git log -1 --pretty=%B | cat)
+lastCommitMessage=$(git log --oneline | cat | head -3)
 echo "Last commit message: $lastCommitMessage $Color_Off"
 
 if [[ $currentBranch =~ ([A-Z][A-Z0-9]+-[0-9]+) ]]; then
