@@ -10,6 +10,7 @@ addall=''
 docommit=''
 emptycommit=''
 dopush=''
+dodeploy=''
 
 # Regular Colors
 Color_Off='\033[0m'
@@ -73,12 +74,13 @@ while true; do
   case $yn in
   [Yy]*)
 
-    while getopts acpe flag; do
+    while getopts acped: flag; do
       case "${flag}" in
       a) addall='true' ;;
       c) docommit='true' ;;
       e) emptycommit='true' ;;
       p) dopush='true' ;;
+      d) dodeploy=${OPTARG} ;;
       esac
     done
 
@@ -100,6 +102,16 @@ while true; do
     if [ "$dopush" = "true" ]; then
       echo "executing > git push"
       git push
+    fi
+
+    if [ "$dodeploy" = "x2" ]; then
+      echo "executing > git push"
+      TAG=deploy.jmpx2.$(date +%s) && echo “Deploying $TAG” && git tag $TAG -f && git push origin $TAG -f
+    fi
+
+    if [ "$dodeploy" = "x3" ]; then
+      echo "executing > git push"
+      TAG=deploy.jmpx3.$(date +%s) && echo “Deploying $TAG” && git tag $TAG -f && git push origin $TAG -f
     fi
 
     break
