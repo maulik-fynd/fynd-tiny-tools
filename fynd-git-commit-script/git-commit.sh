@@ -107,7 +107,7 @@ while true; do
     if [ "$dodeploy" = "x2" ]; then
       echo "Deploying in x2 env"
       TAG=deploy.jmpx2.$(date +%s)
-      echo “Deploying $TAG”
+      echo "Deploying $TAG"
       git tag $TAG -f
       git push origin $TAG -f
     fi
@@ -115,7 +115,7 @@ while true; do
     if [ "$dodeploy" = "x3" ]; then
       echo "Deploying in x3 env"
       TAG=deploy.jmpx3.$(date +%s)
-      echo “Deploying $TAG”
+      echo "Deploying $TAG"
       git tag $TAG -f
       git push origin $TAG -f
     fi
